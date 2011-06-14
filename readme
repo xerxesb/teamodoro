@@ -1,0 +1,10 @@
+Teamodoro is intended to be a team-based pomodoro system.
+
+Main features include:
+  * Team dashboard
+  * Multiple pomodoros running concurrently
+  * Goal setting per pomodoro ("what will we achieve in this pom?")
+  * Leave a message for someone in a pomodoro without interrupting them
+  * Gravatar support
+  
+ 
