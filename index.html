@@ -1,0 +1,58 @@
+<!doctype>
+<html>
+    <head>
+        <title>Teamodoro</title>
+        <script src="script/jquery-1.6.1.min.js"></script>
+    </head>
+    <body>
+        <h1>Teamodoro</h1>
+        <div id="timer"></div>
+        <p><a id="starter" href="#">Start</a></p>
+        <p><a id="stopper" href="#">Stop</a></p>
+        <script>
+            var Timer = function() {
+                var handle;
+                var startTime;
+                var is_started = false;
+                this.start = function(callback) {
+                    if (handle) clearInterval(handle);
+                    is_started = true;
+                    startTime = new Date();
+                    handle = setInterval(callback, 1000);
+                }
+                this.stop = function() {
+                    if (handle) clearInterval(handle);
+                    is_started = false;
+                }
+                this.remaining_seconds = function() {
+                    if (!is_started) return 0;
+                    var now = new Date();
+                    return (25*60) - (now - startTime)/1000;
+                }
+            }
+
+            var timer = new Timer();
+            function startTimer() {
+                timer.start(update_timer_display);
+            }
+
+            function update_timer_display() {
+                var remaining = timer.remaining_seconds();
+                var minutes = Math.floor(remaining / 60);
+                var seconds = Math.ceil(remaining % 60);
+                $("#timer").text(minutes + ":" + pad_seconds(seconds));
+            }
+
+            function pad_seconds(seconds) {
+                if (seconds < 10) return "0" + seconds;
+                return seconds.toString();
+            }
+
+            $(document).ready(function() {
+                $("#starter").click(startTimer);
+                $("#stopper").click(function() { timer.stop(); update_timer_display(); });
+            });
+        </script>
+    </body>
+</html>
+
