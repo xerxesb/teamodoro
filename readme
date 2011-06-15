@@ -4,7 +4,9 @@ Main features include:
   * Team dashboard
   * Multiple pomodoros running concurrently
   * Goal setting per pomodoro ("what will we achieve in this pom?")
+  * Show current/last goal being worked on (replace 00:00 time?)
   * Leave a message for someone in a pomodoro without interrupting them
   * Gravatar support
+
   
  
